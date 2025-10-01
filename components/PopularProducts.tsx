@@ -69,6 +69,9 @@ export default function PopularProducts() {
                 className="flex-none w-[280px] snap-center hover:shadow-lg transition-shadow"
               >
                 <CardContent className="p-6">
+                  {/* Product Gradient Visual */}
+                  <div className={`aspect-square mb-4 rounded-lg ${product.gradientClass}`} />
+
                   {/* Product Header */}
                   <div className="mb-4">
                     <Badge variant="secondary" className="mb-2">

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ROUTES } from "@/lib/constants";
 import { useTranslation } from "@/hooks/useTranslation";
+import { motion, AnimatePresence } from "framer-motion";
 
 const tripSchema = z.object({
   from: z.string().min(1, "Origin is required"),
@@ -57,19 +58,44 @@ export default function PostTripPage() {
   return (
     <div className="min-h-screen py-12">
       <div className="container mx-auto px-4 max-w-2xl">
-        <h1 className="text-4xl font-bold mb-4">{t.postTrip.title}</h1>
-        <p className="text-lg text-muted-foreground mb-8">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-bold mb-4"
+        >
+          {t.postTrip.title}
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-lg text-muted-foreground mb-8"
+        >
           {t.postTrip.subtitle}
-        </p>
+        </motion.p>
 
-        {submitted && (
-          <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-800 dark:text-green-200 px-4 py-3 rounded-lg mb-6">
-            <p className="font-medium">Trip posted successfully!</p>
-            <p className="text-sm">Your trip has been saved and will be visible to senders.</p>
-          </div>
-        )}
+        <AnimatePresence>
+          {submitted && (
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-800 dark:text-green-200 px-4 py-3 rounded-lg mb-6"
+            >
+              <p className="font-medium">Trip posted successfully!</p>
+              <p className="text-sm">Your trip has been saved and will be visible to senders.</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-        <Card>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <Card>
           <CardHeader>
             <CardTitle>Trip Details</CardTitle>
             <CardDescription>
@@ -215,6 +241,7 @@ export default function PostTripPage() {
             </form>
           </CardContent>
         </Card>
+        </motion.div>
       </div>
     </div>
   );

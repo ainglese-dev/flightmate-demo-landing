@@ -5,6 +5,7 @@ import TripCard from "@/components/TripCard";
 import { mockTrips } from "@/lib/mock-data";
 import { ROUTES } from "@/lib/constants";
 import { useTranslation } from "@/hooks/useTranslation";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function TripsPage() {
   const t = useTranslation();
@@ -22,10 +23,22 @@ export default function TripsPage() {
   return (
     <div className="min-h-screen py-12">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-8">{t.trips.title}</h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-bold mb-8"
+        >
+          {t.trips.title}
+        </motion.h1>
 
         {/* Filters */}
-        <div className="bg-muted/50 p-6 rounded-lg mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="bg-muted/50 p-6 rounded-lg mb-8"
+        >
           <div className="grid md:grid-cols-3 gap-4">
             <div>
               <label className="block text-sm font-medium mb-2">{t.trips.filterFrom}</label>
@@ -71,27 +84,47 @@ export default function TripsPage() {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Results */}
-        <div className="mb-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mb-4"
+        >
           <p className="text-muted-foreground">
             {t.trips.found} {filteredTrips.length} {filteredTrips.length !== 1 ? t.trips.trips : t.trips.trip}
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredTrips.map((trip) => (
-            <TripCard key={trip.id} trip={trip} />
-          ))}
+          <AnimatePresence mode="popLayout">
+            {filteredTrips.map((trip, index) => (
+              <motion.div
+                key={trip.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+              >
+                <TripCard trip={trip} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
 
         {filteredTrips.length === 0 && (
-          <div className="text-center py-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center py-12"
+          >
             <p className="text-lg text-muted-foreground">
               {t.trips.noTrips}
             </p>
-          </div>
+          </motion.div>
         )}
       </div>
     </div>

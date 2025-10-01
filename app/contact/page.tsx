@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Mail, MessageSquare } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { motion, AnimatePresence } from "framer-motion";
 
 const contactSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -57,13 +58,30 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen py-12">
       <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-4xl font-bold mb-4 text-center">{t.contact.title}</h1>
-        <p className="text-lg text-muted-foreground mb-12 text-center">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-bold mb-4 text-center"
+        >
+          {t.contact.title}
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-lg text-muted-foreground mb-12 text-center"
+        >
           {t.contact.subtitle}
-        </p>
+        </motion.p>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <Card>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Card>
             <CardHeader>
               <Mail className="h-8 w-8 text-primary mb-2" />
               <CardTitle>Email Us</CardTitle>
@@ -72,8 +90,14 @@ export default function ContactPage() {
               </CardDescription>
             </CardHeader>
           </Card>
+          </motion.div>
 
-          <Card className="bg-primary/5 border-primary/20">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <Card className="bg-primary/5 border-primary/20">
             <CardHeader>
               <MessageSquare className="h-8 w-8 text-primary mb-2" />
               <CardTitle>WhatsApp</CardTitle>
@@ -91,16 +115,30 @@ export default function ContactPage() {
               </a>
             </CardContent>
           </Card>
+          </motion.div>
         </div>
 
-        {submitted && (
-          <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-800 dark:text-green-200 px-4 py-3 rounded-lg mb-6">
-            <p className="font-medium">Message sent successfully!</p>
-            <p className="text-sm">We'll get back to you as soon as possible.</p>
-          </div>
-        )}
+        <AnimatePresence>
+          {submitted && (
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-800 dark:text-green-200 px-4 py-3 rounded-lg mb-6"
+            >
+              <p className="font-medium">Message sent successfully!</p>
+              <p className="text-sm">We'll get back to you as soon as possible.</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-        <Card>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <Card>
           <CardHeader>
             <CardTitle>Send us a message</CardTitle>
             <CardDescription>
@@ -177,6 +215,7 @@ export default function ContactPage() {
             </form>
           </CardContent>
         </Card>
+        </motion.div>
       </div>
     </div>
   );

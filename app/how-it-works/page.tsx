@@ -1,14 +1,19 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { FEATURES, HOW_IT_WORKS_STEPS, PROHIBITED_ITEMS } from "@/lib/constants";
+import { HOW_IT_WORKS_STEPS, PROHIBITED_ITEMS } from "@/lib/constants";
 import { ShieldCheck, AlertTriangle, Plane, Package } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function HowItWorksPage() {
+  const t = useTranslation();
+
   return (
     <div className="min-h-screen py-12">
       <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-4xl font-bold mb-4 text-center">How FlightMate Works</h1>
+        <h1 className="text-4xl font-bold mb-4 text-center">{t.howItWorksPage.title}</h1>
         <p className="text-lg text-muted-foreground mb-12 text-center">
           Connecting travelers and senders for affordable, reliable package delivery
         </p>
@@ -39,7 +44,7 @@ export default function HowItWorksPage() {
         <section className="mb-16">
           <div className="flex items-center gap-2 mb-6">
             <Plane className="h-6 w-6 text-primary" />
-            <h2 className="text-2xl font-bold">For Travelers</h2>
+            <h2 className="text-2xl font-bold">{t.howItWorksPage.forTravelers}</h2>
           </div>
           <Card>
             <CardHeader>
@@ -47,12 +52,22 @@ export default function HowItWorksPage() {
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
-                {FEATURES.travelers.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <ShieldCheck className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
+                <li className="flex items-start gap-2">
+                  <ShieldCheck className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                  <span>{t.howItWorksPage.travelerBenefit1}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ShieldCheck className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                  <span>{t.howItWorksPage.travelerBenefit2}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ShieldCheck className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                  <span>{t.howItWorksPage.travelerBenefit3}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ShieldCheck className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                  <span>{t.howItWorksPage.travelerBenefit4}</span>
+                </li>
               </ul>
               <Link href="/post-trip" className="block mt-6">
                 <Button className="w-full">Post Your Trip</Button>
@@ -65,7 +80,7 @@ export default function HowItWorksPage() {
         <section className="mb-16">
           <div className="flex items-center gap-2 mb-6">
             <Package className="h-6 w-6 text-primary" />
-            <h2 className="text-2xl font-bold">For Senders</h2>
+            <h2 className="text-2xl font-bold">{t.howItWorksPage.forSenders}</h2>
           </div>
           <Card>
             <CardHeader>
@@ -73,12 +88,22 @@ export default function HowItWorksPage() {
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
-                {FEATURES.senders.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <ShieldCheck className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
+                <li className="flex items-start gap-2">
+                  <ShieldCheck className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                  <span>{t.howItWorksPage.senderBenefit1}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ShieldCheck className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                  <span>{t.howItWorksPage.senderBenefit2}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ShieldCheck className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                  <span>{t.howItWorksPage.senderBenefit3}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <ShieldCheck className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+                  <span>{t.howItWorksPage.senderBenefit4}</span>
+                </li>
               </ul>
               <Link href="/trips" className="block mt-6">
                 <Button className="w-full">Find Available Trips</Button>
@@ -91,26 +116,17 @@ export default function HowItWorksPage() {
         <section className="mb-16">
           <div className="flex items-center gap-2 mb-6">
             <AlertTriangle className="h-6 w-6 text-orange-500" />
-            <h2 className="text-2xl font-bold">Safety & Prohibited Items</h2>
+            <h2 className="text-2xl font-bold">{t.howItWorksPage.safety}</h2>
           </div>
           <Card className="border-orange-200 dark:border-orange-800">
             <CardHeader>
-              <CardTitle>Items NOT Allowed for Delivery</CardTitle>
+              <CardTitle>{t.howItWorksPage.prohibited}</CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="grid md:grid-cols-2 gap-3">
-                {PROHIBITED_ITEMS.map((item, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <AlertTriangle className="h-5 w-5 text-orange-500 mt-0.5 shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="text-muted-foreground mb-4">{t.howItWorksPage.prohibitedList}</p>
               <div className="mt-6 p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
                 <p className="text-sm text-orange-800 dark:text-orange-200">
-                  <strong>Important:</strong> Travelers have the right to inspect packages before
-                  accepting them. Both parties are responsible for ensuring all items comply with
-                  international customs regulations.
+                  {t.howItWorksPage.safetyDesc}
                 </p>
               </div>
             </CardContent>

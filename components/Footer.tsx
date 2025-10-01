@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { Plane } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function Footer() {
+  const t = useTranslation();
+
   return (
     <footer className="border-t bg-muted/30">
       <div className="container mx-auto px-4 py-12">
@@ -12,48 +17,48 @@ export default function Footer() {
               <span className="text-xl font-bold">FlightMate</span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Connect travelers and senders for affordable, reliable package delivery.
+              {t.footer.description}
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">For Travelers</h3>
+            <h3 className="font-semibold mb-4">{t.footer.forTravelers}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/post-trip" className="text-muted-foreground hover:text-primary transition-colors">
-                  Post a Trip
+                  {t.footer.postTrip}
                 </Link>
               </li>
               <li>
                 <Link href="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">
-                  How to Earn
+                  {t.footer.howToEarn}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">For Senders</h3>
+            <h3 className="font-semibold mb-4">{t.footer.forSenders}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/trips" className="text-muted-foreground hover:text-primary transition-colors">
-                  Find Trips
+                  {t.footer.findTrips}
                 </Link>
               </li>
               <li>
                 <Link href="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">
-                  How It Works
+                  {t.nav.howItWorks}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Company</h3>
+            <h3 className="font-semibold mb-4">{t.footer.company}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
-                  Contact Us
+                  {t.footer.contactUs}
                 </Link>
               </li>
             </ul>
@@ -61,7 +66,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} FlightMate. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {t.footer.copyright}</p>
         </div>
       </div>
     </footer>

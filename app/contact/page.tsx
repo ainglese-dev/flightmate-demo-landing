@@ -7,6 +7,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Mail, MessageSquare } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const contactSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -18,6 +19,7 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactPage() {
+  const t = useTranslation();
   const [submitted, setSubmitted] = useState(false);
 
   const {
@@ -55,9 +57,9 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen py-12">
       <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-4xl font-bold mb-4 text-center">Contact Us</h1>
+        <h1 className="text-4xl font-bold mb-4 text-center">{t.contact.title}</h1>
         <p className="text-lg text-muted-foreground mb-12 text-center">
-          Have questions? We're here to help!
+          {t.contact.subtitle}
         </p>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -84,7 +86,7 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
               >
                 <Button variant="outline" className="w-full">
-                  Open WhatsApp Chat
+                  {t.contact.whatsapp}
                 </Button>
               </a>
             </CardContent>
@@ -110,13 +112,13 @@ export default function ContactPage() {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Name *
+                    {t.contact.formName} *
                   </label>
                   <input
                     type="text"
                     {...register("name")}
                     className="w-full px-4 py-2 rounded-md border bg-background"
-                    placeholder="Your name"
+                    placeholder={t.contact.placeholderName}
                   />
                   {errors.name && (
                     <p className="text-sm text-red-500 mt-1">{errors.name.message}</p>
@@ -125,13 +127,13 @@ export default function ContactPage() {
 
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Email *
+                    {t.contact.formEmail} *
                   </label>
                   <input
                     type="email"
                     {...register("email")}
                     className="w-full px-4 py-2 rounded-md border bg-background"
-                    placeholder="your@email.com"
+                    placeholder={t.contact.placeholderEmail}
                   />
                   {errors.email && (
                     <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>
@@ -141,13 +143,13 @@ export default function ContactPage() {
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Subject *
+                  {t.contact.formSubject} *
                 </label>
                 <input
                   type="text"
                   {...register("subject")}
                   className="w-full px-4 py-2 rounded-md border bg-background"
-                  placeholder="How can we help?"
+                  placeholder={t.contact.placeholderSubject}
                 />
                 {errors.subject && (
                   <p className="text-sm text-red-500 mt-1">{errors.subject.message}</p>
@@ -156,13 +158,13 @@ export default function ContactPage() {
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Message *
+                  {t.contact.formMessage} *
                 </label>
                 <textarea
                   {...register("message")}
                   className="w-full px-4 py-2 rounded-md border bg-background"
                   rows={6}
-                  placeholder="Tell us more about your question or concern..."
+                  placeholder={t.contact.placeholderMessage}
                 />
                 {errors.message && (
                   <p className="text-sm text-red-500 mt-1">{errors.message.message}</p>
@@ -170,7 +172,7 @@ export default function ContactPage() {
               </div>
 
               <Button type="submit" size="lg" className="w-full">
-                Send Message
+                {t.contact.formSubmit}
               </Button>
             </form>
           </CardContent>

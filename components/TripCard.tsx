@@ -1,14 +1,18 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, Star, Plane } from "lucide-react";
 import type { Trip } from "@/lib/mock-data";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface TripCardProps {
   trip: Trip;
 }
 
 export default function TripCard({ trip }: TripCardProps) {
+  const t = useTranslation();
   return (
     <Card className="hover:shadow-lg transition-shadow">
       <CardHeader>
@@ -27,7 +31,7 @@ export default function TripCard({ trip }: TripCardProps) {
             </div>
           </div>
           <Badge variant={trip.verified ? "default" : "secondary"}>
-            {trip.verified ? "Verified" : "New"}
+            {trip.verified ? t.trips.verified : "New"}
           </Badge>
         </div>
       </CardHeader>
@@ -46,7 +50,7 @@ export default function TripCard({ trip }: TripCardProps) {
 
           <div className="flex items-center justify-between">
             <span className="text-2xl font-bold text-primary">{trip.price}</span>
-            <Button>Contact Traveler</Button>
+            <Button>{t.trips.contactTraveler}</Button>
           </div>
 
           {trip.notes && (

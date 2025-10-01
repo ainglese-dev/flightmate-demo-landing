@@ -4,8 +4,10 @@ import { useState } from "react";
 import TripCard from "@/components/TripCard";
 import { mockTrips } from "@/lib/mock-data";
 import { ROUTES } from "@/lib/constants";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function TripsPage() {
+  const t = useTranslation();
   const [fromFilter, setFromFilter] = useState("");
   const [toFilter, setToFilter] = useState("");
 
@@ -20,19 +22,19 @@ export default function TripsPage() {
   return (
     <div className="min-h-screen py-12">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-8">Find Available Trips</h1>
+        <h1 className="text-4xl font-bold mb-8">{t.trips.title}</h1>
 
         {/* Filters */}
         <div className="bg-muted/50 p-6 rounded-lg mb-8">
           <div className="grid md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-2">From</label>
+              <label className="block text-sm font-medium mb-2">{t.trips.filterFrom}</label>
               <select
                 className="w-full px-4 py-2 rounded-md border bg-background"
                 value={fromFilter}
                 onChange={(e) => setFromFilter(e.target.value)}
               >
-                <option value="">All Cities</option>
+                <option value="">{t.trips.allCities}</option>
                 {allCities.map((city) => (
                   <option key={city} value={city}>
                     {city}
@@ -42,13 +44,13 @@ export default function TripsPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">To</label>
+              <label className="block text-sm font-medium mb-2">{t.trips.filterTo}</label>
               <select
                 className="w-full px-4 py-2 rounded-md border bg-background"
                 value={toFilter}
                 onChange={(e) => setToFilter(e.target.value)}
               >
-                <option value="">All Cities</option>
+                <option value="">{t.trips.allCities}</option>
                 {allCities.map((city) => (
                   <option key={city} value={city}>
                     {city}
@@ -65,7 +67,7 @@ export default function TripsPage() {
                 }}
                 className="w-full px-4 py-2 rounded-md border hover:bg-muted transition-colors"
               >
-                Clear Filters
+                {t.trips.clearFilters}
               </button>
             </div>
           </div>
@@ -74,7 +76,7 @@ export default function TripsPage() {
         {/* Results */}
         <div className="mb-4">
           <p className="text-muted-foreground">
-            Found {filteredTrips.length} trip{filteredTrips.length !== 1 ? "s" : ""}
+            {t.trips.found} {filteredTrips.length} {filteredTrips.length !== 1 ? t.trips.trips : t.trips.trip}
           </p>
         </div>
 
@@ -87,7 +89,7 @@ export default function TripsPage() {
         {filteredTrips.length === 0 && (
           <div className="text-center py-12">
             <p className="text-lg text-muted-foreground">
-              No trips found matching your criteria. Try adjusting your filters.
+              {t.trips.noTrips}
             </p>
           </div>
         )}

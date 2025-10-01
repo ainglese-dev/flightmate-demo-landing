@@ -7,6 +7,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ROUTES } from "@/lib/constants";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const tripSchema = z.object({
   from: z.string().min(1, "Origin is required"),
@@ -22,6 +23,7 @@ const tripSchema = z.object({
 type TripFormData = z.infer<typeof tripSchema>;
 
 export default function PostTripPage() {
+  const t = useTranslation();
   const [submitted, setSubmitted] = useState(false);
 
   const {
@@ -55,9 +57,9 @@ export default function PostTripPage() {
   return (
     <div className="min-h-screen py-12">
       <div className="container mx-auto px-4 max-w-2xl">
-        <h1 className="text-4xl font-bold mb-4">Post Your Trip</h1>
+        <h1 className="text-4xl font-bold mb-4">{t.postTrip.title}</h1>
         <p className="text-lg text-muted-foreground mb-8">
-          Share your flight details and earn money by delivering packages
+          {t.postTrip.subtitle}
         </p>
 
         {submitted && (
@@ -79,13 +81,13 @@ export default function PostTripPage() {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    From *
+                    {t.postTrip.formOrigin} *
                   </label>
                   <select
                     {...register("from")}
                     className="w-full px-4 py-2 rounded-md border bg-background"
                   >
-                    <option value="">Select origin</option>
+                    <option value="">{t.postTrip.selectCity}</option>
                     {allCities.map((city) => (
                       <option key={city} value={city}>
                         {city}
@@ -99,13 +101,13 @@ export default function PostTripPage() {
 
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    To *
+                    {t.postTrip.formDestination} *
                   </label>
                   <select
                     {...register("to")}
                     className="w-full px-4 py-2 rounded-md border bg-background"
                   >
-                    <option value="">Select destination</option>
+                    <option value="">{t.postTrip.selectCity}</option>
                     {allCities.map((city) => (
                       <option key={city} value={city}>
                         {city}
@@ -121,7 +123,7 @@ export default function PostTripPage() {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Travel Date *
+                    {t.postTrip.formDate} *
                   </label>
                   <input
                     type="date"
@@ -148,7 +150,7 @@ export default function PostTripPage() {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Available Space (kg) *
+                    {t.postTrip.formSpace} *
                   </label>
                   <input
                     type="number"
@@ -165,7 +167,7 @@ export default function PostTripPage() {
 
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Price per kg (USD) *
+                    {t.postTrip.formPrice} *
                   </label>
                   <input
                     type="number"
@@ -182,13 +184,13 @@ export default function PostTripPage() {
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Contact (WhatsApp/Email) *
+                  {t.postTrip.formContact} *
                 </label>
                 <input
                   type="text"
                   {...register("contact")}
                   className="w-full px-4 py-2 rounded-md border bg-background"
-                  placeholder="e.g., +51 999 999 999 or email@example.com"
+                  placeholder={t.postTrip.placeholderContact}
                 />
                 {errors.contact && (
                   <p className="text-sm text-red-500 mt-1">{errors.contact.message}</p>
@@ -197,18 +199,18 @@ export default function PostTripPage() {
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Additional Notes (optional)
+                  {t.postTrip.formNotes}
                 </label>
                 <textarea
                   {...register("notes")}
                   className="w-full px-4 py-2 rounded-md border bg-background"
                   rows={4}
-                  placeholder="Meeting location, flight details, any special conditions..."
+                  placeholder={t.postTrip.placeholderNotes}
                 />
               </div>
 
               <Button type="submit" size="lg" className="w-full">
-                Post Trip
+                {t.postTrip.formSubmit}
               </Button>
             </form>
           </CardContent>

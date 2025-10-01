@@ -1,4 +1,7 @@
+"use client";
+
 import { Package, ShieldCheck, Lock, Umbrella } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const iconMap = {
   package: Package,
@@ -7,19 +10,18 @@ const iconMap = {
   umbrella: Umbrella,
 };
 
-interface TrustBadge {
-  label: string;
-  icon: keyof typeof iconMap;
-}
-
-const trustIndicators: TrustBadge[] = [
-  { label: "500+ successful deliveries", icon: "package" },
-  { label: "Verified travelers only", icon: "shield-check" },
-  { label: "Secure payments", icon: "lock" },
-  { label: "Full insurance coverage", icon: "umbrella" },
-];
+type IconKey = keyof typeof iconMap;
 
 export default function TrustBadges() {
+  const t = useTranslation();
+
+  const trustIndicators: { label: string; icon: IconKey }[] = [
+    { label: t.trust.deliveries, icon: "package" },
+    { label: t.trust.verified, icon: "shield-check" },
+    { label: t.trust.payments, icon: "lock" },
+    { label: t.trust.insurance, icon: "umbrella" },
+  ];
+
   return (
     <section className="py-12 bg-muted/50">
       <div className="container mx-auto px-4">

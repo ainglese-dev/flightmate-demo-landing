@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Gift } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -74,9 +74,17 @@ export default function PopularProducts() {
 
                   {/* Product Header */}
                   <div className="mb-4">
-                    <Badge variant="secondary" className="mb-2">
-                      {language === "en" ? product.category : product.categoryEs}
-                    </Badge>
+                    <div className="flex gap-2 mb-2">
+                      <Badge variant="secondary">
+                        {language === "en" ? product.category : product.categoryEs}
+                      </Badge>
+                      {product.isGift && (
+                        <Badge variant="default" className="bg-pink-500 hover:bg-pink-600">
+                          <Gift className="h-3 w-3 mr-1" />
+                          {language === "en" ? "Gift" : "Regalo"}
+                        </Badge>
+                      )}
+                    </div>
                     <h3 className="font-semibold text-lg mb-2">
                       {language === "en" ? product.name : product.nameEs}
                     </h3>

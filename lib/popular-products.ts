@@ -11,6 +11,7 @@ export interface PopularProduct {
   ebayLink?: string;
   imageUrl?: string;
   gradientClass: string;
+  isGift?: boolean;
 }
 
 export const popularProducts: PopularProduct[] = [
@@ -26,6 +27,7 @@ export const popularProducts: PopularProduct[] = [
     amazonLink: "https://www.amazon.com/Apple-Generation-Cancelling-Transparency-Personalized/dp/B0BDHWDR12",
     ebayLink: "https://www.ebay.com/sch/i.html?_nkw=airpods+pro+2nd+generation",
     gradientClass: "bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-blue-600/20",
+    isGift: true,
   },
   {
     id: 2,
@@ -52,6 +54,7 @@ export const popularProducts: PopularProduct[] = [
     amazonLink: "https://www.amazon.com/s?k=nike+air+max",
     ebayLink: "https://www.ebay.com/sch/i.html?_nkw=nike+air+max",
     gradientClass: "bg-gradient-to-br from-pink-500/20 via-orange-500/20 to-rose-600/20",
+    isGift: true,
   },
   {
     id: 4,
@@ -65,6 +68,7 @@ export const popularProducts: PopularProduct[] = [
     amazonLink: "https://www.amazon.com/s?k=estee+lauder+skincare+set",
     ebayLink: "https://www.ebay.com/sch/i.html?_nkw=estee+lauder+skincare",
     gradientClass: "bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-fuchsia-600/20",
+    isGift: true,
   },
   {
     id: 5,
@@ -91,6 +95,7 @@ export const popularProducts: PopularProduct[] = [
     amazonLink: "https://www.amazon.com/Apple-Smartwatch-Aluminum-Fitness-Detection/dp/B0CHX9CY7W",
     ebayLink: "https://www.ebay.com/sch/i.html?_nkw=apple+watch+series+9",
     gradientClass: "bg-gradient-to-br from-indigo-500/20 via-blue-500/20 to-cyan-600/20",
+    isGift: true,
   },
   {
     id: 7,
@@ -104,6 +109,7 @@ export const popularProducts: PopularProduct[] = [
     amazonLink: "https://www.amazon.com/Beats-Studio-Pro-Personalized-Compatibility/dp/B0C8PYX9SJ",
     ebayLink: "https://www.ebay.com/sch/i.html?_nkw=beats+studio+pro",
     gradientClass: "bg-gradient-to-br from-red-500/20 via-rose-500/20 to-pink-600/20",
+    isGift: true,
   },
   {
     id: 8,

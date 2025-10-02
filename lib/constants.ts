@@ -2,9 +2,9 @@ export const ROUTES = {
   peru_cities: ["Lima", "Cusco", "Arequipa"],
   usa_cities: ["Miami", "Fort Lauderdale", "Orlando"],
   popular: [
-    { from: "Lima", to: "Miami", price: 15 },
-    { from: "Miami", to: "Lima", price: 18 },
-    { from: "Cusco", to: "Miami", price: 20 },
+    { from: "Miami", to: "Lima", price: 15 },
+    { from: "Miami", to: "Cusco", price: 18 },
+    { from: "Lima", to: "Miami", price: 20 },
   ],
 };
 

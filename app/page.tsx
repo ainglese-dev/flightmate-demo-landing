@@ -3,6 +3,8 @@
 import Hero from "@/components/Hero";
 import TrustBadges from "@/components/TrustBadges";
 import PopularProducts from "@/components/PopularProducts";
+import Testimonials from "@/components/Testimonials";
+import ExpandingSoon from "@/components/ExpandingSoon";
 import { ROUTES } from "@/lib/constants";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -70,6 +72,9 @@ export default function Home() {
       {/* Popular Products */}
       <PopularProducts />
 
+      {/* Testimonials */}
+      <Testimonials />
+
       {/* Popular Routes */}
       <section ref={routesRef} className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
@@ -112,6 +117,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Expanding Soon */}
+      <ExpandingSoon />
     </div>
   );
 }

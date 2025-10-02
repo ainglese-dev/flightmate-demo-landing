@@ -95,3 +95,6 @@ export const CAPACITY_TYPES = {
     descriptionEs: "Múltiples piezas de equipaje o capacidad extra",
   },
 } as const;
+
+// CONTACT_INFO has been moved to lib/dev-template-company-info.ts
+// Import from there: import { COMPANY_INFO } from "@/lib/dev-template-company-info"

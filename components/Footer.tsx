@@ -3,14 +3,17 @@
 import Link from "next/link";
 import { Plane } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/components/LanguageProvider";
+import { COMPANY_INFO } from "@/lib/dev-template-company-info";
 
 export default function Footer() {
   const t = useTranslation();
+  const { language } = useLanguage();
 
   return (
     <footer className="border-t bg-muted/30">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           <div>
             <Link href="/" className="flex items-center space-x-2 mb-4">
               <Plane className="h-6 w-6 text-primary" />
@@ -59,6 +62,29 @@ export default function Footer() {
               <li>
                 <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
                   {t.footer.contactUs}
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="text-muted-foreground hover:text-primary transition-colors">
+                  {language === "en" ? "FAQ" : "Preguntas Frecuentes"}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-4">
+              {language === "en" ? "Legal" : "Legal"}
+            </h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors">
+                  {language === "en" ? "Privacy Policy" : "Política de Privacidad"}
+                </Link>
+              </li>
+              <li>
+                <Link href="/habeas-data" className="text-muted-foreground hover:text-primary transition-colors">
+                  {language === "en" ? "Habeas Data" : "Habeas Data"}
                 </Link>
               </li>
             </ul>

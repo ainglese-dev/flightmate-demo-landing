@@ -1,3 +1,5 @@
+export type CapacityType = "hand-carry" | "backpack" | "checked-luggage" | "multiple-bags";
+
 export interface Trip {
   id: number;
   traveler: string;
@@ -11,6 +13,7 @@ export interface Trip {
   price: string;
   verified: boolean;
   rating: number;
+  capacityType: CapacityType;
   notes?: string;
 }
 
@@ -28,6 +31,7 @@ export const mockTrips: Trip[] = [
     price: "$15/kg",
     verified: true,
     rating: 4.8,
+    capacityType: "backpack",
     notes: "Direct flight, can meet at Miami airport or deliver in Lima",
   },
   {
@@ -43,6 +47,7 @@ export const mockTrips: Trip[] = [
     price: "$18/kg",
     verified: true,
     rating: 4.9,
+    capacityType: "checked-luggage",
     notes: "Regular traveler, flexible meeting point",
   },
   {
@@ -58,6 +63,7 @@ export const mockTrips: Trip[] = [
     price: "$20/kg",
     verified: true,
     rating: 4.7,
+    capacityType: "hand-carry",
     notes: "One stop in Lima, can deliver to Fort Lauderdale area",
   },
   {
@@ -73,6 +79,7 @@ export const mockTrips: Trip[] = [
     price: "$16/kg",
     verified: false,
     rating: 4.5,
+    capacityType: "backpack",
   },
   {
     id: 5,
@@ -87,6 +94,7 @@ export const mockTrips: Trip[] = [
     price: "$17/kg",
     verified: true,
     rating: 4.9,
+    capacityType: "backpack",
     notes: "Experienced traveler, 20+ deliveries",
   },
   {
@@ -102,6 +110,7 @@ export const mockTrips: Trip[] = [
     price: "$19/kg",
     verified: true,
     rating: 4.6,
+    capacityType: "backpack",
   },
   {
     id: 7,
@@ -116,6 +125,7 @@ export const mockTrips: Trip[] = [
     price: "$16/kg",
     verified: true,
     rating: 4.8,
+    capacityType: "checked-luggage",
     notes: "Can pick up in Tampa/Orlando area, delivering to Lima",
   },
   {
@@ -131,6 +141,7 @@ export const mockTrips: Trip[] = [
     price: "$19/kg",
     verified: true,
     rating: 4.7,
+    capacityType: "backpack",
   },
   {
     id: 9,
@@ -145,6 +156,7 @@ export const mockTrips: Trip[] = [
     price: "$15/kg",
     verified: true,
     rating: 4.9,
+    capacityType: "checked-luggage",
     notes: "Business traveler, monthly trips Miami-Lima",
   },
   {
@@ -160,5 +172,6 @@ export const mockTrips: Trip[] = [
     price: "$17/kg",
     verified: false,
     rating: 4.4,
+    capacityType: "backpack",
   },
 ];

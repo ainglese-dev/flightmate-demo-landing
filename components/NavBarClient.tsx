@@ -29,6 +29,12 @@ export default function NavBarClient() {
             <Link href="/how-it-works" className="text-sm font-medium hover:text-primary transition-colors">
               {t.nav.howItWorks}
             </Link>
+            <Link href="/use-cases" className="text-sm font-medium hover:text-primary transition-colors">
+              {t.nav.useCases}
+            </Link>
+            <Link href="/faq" className="text-sm font-medium hover:text-primary transition-colors">
+              {t.nav.faq}
+            </Link>
             <Link href="/contact" className="text-sm font-medium hover:text-primary transition-colors">
               {t.nav.contact}
             </Link>
@@ -76,6 +82,20 @@ export default function NavBarClient() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t.nav.howItWorks}
+              </Link>
+              <Link
+                href="/use-cases"
+                className="text-sm font-medium hover:text-primary transition-colors px-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t.nav.useCases}
+              </Link>
+              <Link
+                href="/faq"
+                className="text-sm font-medium hover:text-primary transition-colors px-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t.nav.faq}
               </Link>
               <Link
                 href="/contact"

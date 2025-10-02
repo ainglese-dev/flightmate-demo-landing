@@ -6,6 +6,8 @@ export const translations = {
     nav: {
       findTrips: "Find Trips",
       howItWorks: "How It Works",
+      useCases: "Use Cases",
+      faq: "FAQ",
       contact: "Contact",
       postTrip: "Post Your Trip",
     },
@@ -95,12 +97,16 @@ export const translations = {
     // How It Works Page
     howItWorksPage: {
       title: "How FlightMate Works",
+      subtitle: "Connecting travelers and senders for affordable, reliable package delivery",
+      processTitle: "The Process",
       forTravelers: "For Travelers",
+      travelerTitle: "Earn Money While You Travel",
       travelerBenefit1: "Earn $100-300 per trip",
       travelerBenefit2: "Verified sender identity",
       travelerBenefit3: "Flexible pickup locations",
       travelerBenefit4: "Full insurance coverage",
       forSenders: "For Senders",
+      senderTitle: "Save Money on Package Delivery",
       senderBenefit1: "Save 50-70% vs courier",
       senderBenefit2: "Track your package",
       senderBenefit3: "Direct communication",
@@ -109,6 +115,13 @@ export const translations = {
       safetyDesc: "All packages are insured up to $1000. We verify traveler identity and maintain strict prohibited items policies.",
       prohibited: "Prohibited Items",
       prohibitedList: "Weapons, drugs, hazardous materials, perishables, live animals, documents requiring legal delivery",
+      faqTitle: "Frequently Asked Questions",
+      faqQ1: "Is FlightMate safe?",
+      faqA1: "We verify traveler identities and encourage both parties to meet in public places. All transactions are tracked, and we recommend using our secure payment system when it becomes available.",
+      faqQ2: "How much can I save/earn?",
+      faqA2: "Senders typically save 50-70% compared to traditional courier services. Travelers can earn $100-300 per trip depending on available space and demand.",
+      faqQ3: "What about customs and regulations?",
+      faqA3: "Both travelers and senders are responsible for ensuring packages comply with all customs regulations. We recommend declaring all items and checking with customs authorities before traveling.",
     },
     // Contact Page
     contact: {
@@ -148,6 +161,8 @@ export const translations = {
     nav: {
       findTrips: "Buscar Viajes",
       howItWorks: "Cómo Funciona",
+      useCases: "Casos de Uso",
+      faq: "Preguntas Frecuentes",
       contact: "Contacto",
       postTrip: "Publicar Viaje",
     },
@@ -237,12 +252,16 @@ export const translations = {
     // How It Works Page
     howItWorksPage: {
       title: "Cómo Funciona FlightMate",
+      subtitle: "Conectando viajeros y remitentes para entrega de paquetes asequible y confiable",
+      processTitle: "El Proceso",
       forTravelers: "Para Viajeros",
+      travelerTitle: "Gana Dinero Mientras Viajas",
       travelerBenefit1: "Gana $100-300 por viaje",
       travelerBenefit2: "Identidad verificada del remitente",
       travelerBenefit3: "Ubicaciones de recogida flexibles",
       travelerBenefit4: "Cobertura completa de seguro",
       forSenders: "Para Remitentes",
+      senderTitle: "Ahorra Dinero en Envío de Paquetes",
       senderBenefit1: "Ahorra 50-70% vs mensajería",
       senderBenefit2: "Rastrea tu paquete",
       senderBenefit3: "Comunicación directa",
@@ -251,6 +270,13 @@ export const translations = {
       safetyDesc: "Todos los paquetes están asegurados hasta $1000. Verificamos la identidad del viajero y mantenemos políticas estrictas de artículos prohibidos.",
       prohibited: "Artículos Prohibidos",
       prohibitedList: "Armas, drogas, materiales peligrosos, perecederos, animales vivos, documentos que requieren entrega legal",
+      faqTitle: "Preguntas Frecuentes",
+      faqQ1: "¿Es seguro FlightMate?",
+      faqA1: "Verificamos las identidades de los viajeros y alentamos a ambas partes a reunirse en lugares públicos. Todas las transacciones se rastrean y recomendamos usar nuestro sistema de pago seguro cuando esté disponible.",
+      faqQ2: "¿Cuánto puedo ahorrar/ganar?",
+      faqA2: "Los remitentes típicamente ahorran 50-70% comparado con servicios de mensajería tradicionales. Los viajeros pueden ganar $100-300 por viaje dependiendo del espacio disponible y la demanda.",
+      faqQ3: "¿Qué pasa con las regulaciones aduaneras?",
+      faqA3: "Tanto viajeros como remitentes son responsables de asegurar que los paquetes cumplan con todas las regulaciones aduaneras. Recomendamos declarar todos los artículos y consultar con las autoridades aduaneras antes de viajar.",
     },
     // Contact Page
     contact: {

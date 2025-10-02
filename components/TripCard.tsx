@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, Star, Plane } from "lucide-react";
 import type { Trip } from "@/lib/mock-data";
+import { CAPACITY_TYPES } from "@/lib/constants";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useLanguage } from "@/components/LanguageProvider";
 
@@ -29,6 +30,12 @@ export default function TripCard({ trip }: TripCardProps) {
         <div className="flex items-start justify-between">
           <div>
             <CardTitle className="text-xl mb-2">{trip.route}</CardTitle>
+            <Badge variant="outline" className="mb-2">
+              <span className="mr-1">{CAPACITY_TYPES[trip.capacityType].icon}</span>
+              {language === "en"
+                ? CAPACITY_TYPES[trip.capacityType].label
+                : CAPACITY_TYPES[trip.capacityType].labelEs}
+            </Badge>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <span>{trip.traveler}</span>
               {trip.verified && (

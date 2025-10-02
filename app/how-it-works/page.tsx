@@ -7,10 +7,12 @@ import Link from "next/link";
 import { HOW_IT_WORKS_STEPS, PROHIBITED_ITEMS } from "@/lib/constants";
 import { ShieldCheck, AlertTriangle, Plane, Package } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/components/LanguageProvider";
 import { motion, useInView } from "framer-motion";
 
 export default function HowItWorksPage() {
   const t = useTranslation();
+  const { language } = useLanguage();
   const stepsRef = useRef(null);
   const travelersRef = useRef(null);
   const sendersRef = useRef(null);
@@ -40,7 +42,7 @@ export default function HowItWorksPage() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-lg text-muted-foreground mb-12 text-center"
         >
-          Connecting travelers and senders for affordable, reliable package delivery
+          {t.howItWorksPage.subtitle}
         </motion.p>
 
         {/* How It Works Steps */}
@@ -51,7 +53,7 @@ export default function HowItWorksPage() {
             transition={{ duration: 0.5 }}
             className="text-2xl font-bold mb-6"
           >
-            The Process
+            {t.howItWorksPage.processTitle}
           </motion.h2>
           <div className="space-y-6">
             {HOW_IT_WORKS_STEPS.map((step, index) => (
@@ -68,8 +70,12 @@ export default function HowItWorksPage() {
                       {step.number}
                     </div>
                     <div>
-                      <CardTitle className="mb-2">{step.title}</CardTitle>
-                      <p className="text-muted-foreground">{step.description}</p>
+                      <CardTitle className="mb-2">
+                        {language === "en" ? step.title : step.titleEs}
+                      </CardTitle>
+                      <p className="text-muted-foreground">
+                        {language === "en" ? step.description : step.descriptionEs}
+                      </p>
                     </div>
                   </div>
                 </CardHeader>
@@ -97,7 +103,7 @@ export default function HowItWorksPage() {
           >
             <Card>
             <CardHeader>
-              <CardTitle>Earn Money While You Travel</CardTitle>
+              <CardTitle>{t.howItWorksPage.travelerTitle}</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
@@ -119,7 +125,7 @@ export default function HowItWorksPage() {
                 </li>
               </ul>
               <Link href="/post-trip" className="block mt-6">
-                <Button className="w-full">Post Your Trip</Button>
+                <Button className="w-full">{t.nav.postTrip}</Button>
               </Link>
             </CardContent>
           </Card>
@@ -144,7 +150,7 @@ export default function HowItWorksPage() {
           >
             <Card>
             <CardHeader>
-              <CardTitle>Save Money on Package Delivery</CardTitle>
+              <CardTitle>{t.howItWorksPage.senderTitle}</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
@@ -166,7 +172,7 @@ export default function HowItWorksPage() {
                 </li>
               </ul>
               <Link href="/trips" className="block mt-6">
-                <Button className="w-full">Find Available Trips</Button>
+                <Button className="w-full">{t.nav.findTrips}</Button>
               </Link>
             </CardContent>
           </Card>
@@ -213,7 +219,7 @@ export default function HowItWorksPage() {
             transition={{ duration: 0.5 }}
             className="text-2xl font-bold mb-6"
           >
-            Frequently Asked Questions
+            {t.howItWorksPage.faqTitle}
           </motion.h2>
           <div className="space-y-4">
             <motion.div
@@ -223,13 +229,11 @@ export default function HowItWorksPage() {
             >
               <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Is FlightMate safe?</CardTitle>
+                <CardTitle className="text-lg">{t.howItWorksPage.faqQ1}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  We verify traveler identities and encourage both parties to meet in public places.
-                  All transactions are tracked, and we recommend using our secure payment system when
-                  it becomes available.
+                  {t.howItWorksPage.faqA1}
                 </p>
               </CardContent>
             </Card>
@@ -242,12 +246,11 @@ export default function HowItWorksPage() {
             >
               <Card>
               <CardHeader>
-                <CardTitle className="text-lg">How much can I save/earn?</CardTitle>
+                <CardTitle className="text-lg">{t.howItWorksPage.faqQ2}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Senders typically save 50-70% compared to traditional courier services. Travelers
-                  can earn $100-300 per trip depending on available space and demand.
+                  {t.howItWorksPage.faqA2}
                 </p>
               </CardContent>
             </Card>
@@ -260,13 +263,11 @@ export default function HowItWorksPage() {
             >
               <Card>
               <CardHeader>
-                <CardTitle className="text-lg">What about customs and regulations?</CardTitle>
+                <CardTitle className="text-lg">{t.howItWorksPage.faqQ3}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Both travelers and senders are responsible for ensuring packages comply with all
-                  customs regulations. We recommend declaring all items and checking with customs
-                  authorities before traveling.
+                  {t.howItWorksPage.faqA3}
                 </p>
               </CardContent>
             </Card>

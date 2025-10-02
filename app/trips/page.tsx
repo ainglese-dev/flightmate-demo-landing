@@ -3,19 +3,24 @@
 import { useState } from "react";
 import TripCard from "@/components/TripCard";
 import { mockTrips } from "@/lib/mock-data";
-import { ROUTES } from "@/lib/constants";
+import type { CapacityType } from "@/lib/mock-data";
+import { ROUTES, CAPACITY_TYPES } from "@/lib/constants";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/components/LanguageProvider";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function TripsPage() {
   const t = useTranslation();
+  const { language } = useLanguage();
   const [fromFilter, setFromFilter] = useState("");
   const [toFilter, setToFilter] = useState("");
+  const [capacityFilter, setCapacityFilter] = useState<CapacityType | "">("");
 
   const filteredTrips = mockTrips.filter((trip) => {
     const matchesFrom = !fromFilter || trip.from === fromFilter;
     const matchesTo = !toFilter || trip.to === toFilter;
-    return matchesFrom && matchesTo;
+    const matchesCapacity = !capacityFilter || trip.capacityType === capacityFilter;
+    return matchesFrom && matchesTo && matchesCapacity;
   });
 
   const allCities = [...ROUTES.peru_cities, ...ROUTES.usa_cities];
@@ -39,7 +44,7 @@ export default function TripsPage() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="bg-muted/50 p-6 rounded-lg mb-8"
         >
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
               <label className="block text-sm font-medium mb-2">{t.trips.filterFrom}</label>
               <select
@@ -72,11 +77,32 @@ export default function TripsPage() {
               </select>
             </div>
 
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                {language === "en" ? "Capacity" : "Capacidad"}
+              </label>
+              <select
+                className="w-full px-4 py-2 rounded-md border bg-background"
+                value={capacityFilter}
+                onChange={(e) => setCapacityFilter(e.target.value as CapacityType | "")}
+              >
+                <option value="">
+                  {language === "en" ? "All capacities" : "Todas las capacidades"}
+                </option>
+                {Object.entries(CAPACITY_TYPES).map(([key, value]) => (
+                  <option key={key} value={key}>
+                    {value.icon} {language === "en" ? value.label : value.labelEs}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             <div className="flex items-end">
               <button
                 onClick={() => {
                   setFromFilter("");
                   setToFilter("");
+                  setCapacityFilter("");
                 }}
                 className="w-full px-4 py-2 rounded-md border hover:bg-muted transition-colors"
               >

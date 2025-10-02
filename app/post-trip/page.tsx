@@ -6,8 +6,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ROUTES } from "@/lib/constants";
+import { ROUTES, CAPACITY_TYPES } from "@/lib/constants";
+import type { CapacityType } from "@/lib/mock-data";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/components/LanguageProvider";
 import { motion, AnimatePresence } from "framer-motion";
 
 const tripSchema = z.object({
@@ -16,6 +18,7 @@ const tripSchema = z.object({
   travelDate: z.string().min(1, "Travel date is required"),
   availableSpace: z.number().min(1).max(20),
   pricePerKg: z.number().min(1),
+  capacityType: z.enum(["hand-carry", "backpack", "checked-luggage", "multiple-bags"]),
   returnDate: z.string().optional(),
   contact: z.string().min(1, "Contact information is required"),
   notes: z.string().optional(),
@@ -25,6 +28,7 @@ type TripFormData = z.infer<typeof tripSchema>;
 
 export default function PostTripPage() {
   const t = useTranslation();
+  const { language } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
 
   const {
@@ -206,6 +210,33 @@ export default function PostTripPage() {
                     <p className="text-sm text-red-500 mt-1">{errors.pricePerKg.message}</p>
                   )}
                 </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-2">
+                  {language === "en" ? "Luggage Capacity" : "Capacidad de Equipaje"} *
+                </label>
+                <select
+                  {...register("capacityType")}
+                  className="w-full px-4 py-2 rounded-md border bg-background"
+                >
+                  <option value="">
+                    {language === "en" ? "Select capacity type" : "Selecciona tipo de capacidad"}
+                  </option>
+                  {Object.entries(CAPACITY_TYPES).map(([key, value]) => (
+                    <option key={key} value={key}>
+                      {value.icon} {language === "en" ? value.label : value.labelEs} ({value.weight})
+                    </option>
+                  ))}
+                </select>
+                {errors.capacityType && (
+                  <p className="text-sm text-red-500 mt-1">{errors.capacityType.message}</p>
+                )}
+                <p className="text-xs text-muted-foreground mt-1">
+                  {language === "en"
+                    ? "Choose the type of baggage space you have available"
+                    : "Elige el tipo de espacio de equipaje que tienes disponible"}
+                </p>
               </div>
 
               <div>

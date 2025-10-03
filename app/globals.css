@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    /* Warm Cream & Soft Blue Light Mode - Professional & Soothing 2-Color Palette */
-    --background: 45 25% 97%;               /* Warm cream - main background (like paper) */
-    --foreground: 222 47% 11%;              /* Dark text for readability */
-    --card: 210 40% 98%;                    /* Soft blue-white - cards stand out gently */
-    --card-foreground: 222 47% 11%;         /* Dark text on cards */
-    --popover: 210 40% 98%;                 /* Popover background matches cards */
-    --popover-foreground: 222 47% 11%;      /* Popover text */
-    --primary: 221.2 83.2% 53.3%;           /* Keep existing brand blue */
+    /* Claude.ai Light Mode - Warm Cream & Soft Accents */
+    --background: 30 20% 96%;               /* Warm cream/beige background (Claude's light mode) */
+    --foreground: 20 14% 8%;                /* Dark brown-black text */
+    --card: 0 0% 100%;                      /* White cards */
+    --card-foreground: 20 14% 8%;           /* Dark text on cards */
+    --popover: 0 0% 100%;                   /* White popover */
+    --popover-foreground: 20 14% 8%;        /* Dark popover text */
+    --primary: 221.2 83.2% 53.3%;           /* Keep your brand blue */
     --primary-foreground: 210 40% 98%;      /* Light text on primary */
-    --secondary: 210 30% 94%;               /* Light blue-grey - secondary elements */
-    --secondary-foreground: 222 47% 11%;    /* Dark text on secondary */
-    --muted: 210 30% 94%;                   /* Light blue-grey - subtle sections */
-    --muted-foreground: 215 16% 47%;        /* Muted text */
-    --accent: 210 30% 94%;                  /* Accent backgrounds */
-    --accent-foreground: 222 47% 11%;       /* Accent text */
-    --destructive: 0 84.2% 60.2%;           /* Destructive red */
-    --destructive-foreground: 210 40% 98%;  /* Text on destructive */
-    --border: 210 25% 88%;                  /* Soft blue-grey borders */
-    --input: 210 25% 88%;                   /* Input borders */
-    --ring: 221.2 83.2% 53.3%;              /* Focus ring (matches primary) */
+    --secondary: 30 15% 92%;                /* Warm beige secondary */
+    --secondary-foreground: 20 14% 8%;      /* Dark text on secondary */
+    --muted: 30 15% 92%;                    /* Warm beige muted sections */
+    --muted-foreground: 25 5% 45%;          /* Muted text */
+    --accent: 30 15% 90%;                   /* Accent backgrounds */
+    --accent-foreground: 20 14% 8%;         /* Accent text */
+    --destructive: 0 84.2% 60.2%;           /* Red */
+    --destructive-foreground: 210 40% 98%;  /* Light text */
+    --border: 30 12% 88%;                   /* Soft warm borders */
+    --input: 30 12% 88%;                    /* Input borders */
+    --ring: 221.2 83.2% 53.3%;              /* Focus ring */
     --radius: 0.5rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -33,27 +33,27 @@
   }
 
   .dark {
-    /* Warm Slate Dark Mode - Easier on eyes, modern aesthetic */
-    --background: 222 47% 11%;              /* Soft charcoal background */
-    --foreground: 213 27% 84%;              /* Light grey text */
-    --card: 217 33% 17%;                    /* Cards slightly lighter than background */
-    --card-foreground: 213 27% 84%;         /* Card text */
-    --popover: 217 33% 17%;                 /* Popover background */
-    --popover-foreground: 213 27% 84%;      /* Popover text */
-    --primary: 217.2 91.2% 59.8%;           /* Keep existing blue accent */
+    /* Claude.ai Dark Mode - Warm Dark Grey & Rich Accents */
+    --background: 20 14% 10%;               /* Warm dark grey (Claude's dark mode) */
+    --foreground: 30 20% 96%;               /* Warm light text */
+    --card: 20 12% 14%;                     /* Cards slightly lighter */
+    --card-foreground: 30 20% 96%;          /* Light card text */
+    --popover: 20 12% 14%;                  /* Popover background */
+    --popover-foreground: 30 20% 96%;       /* Light popover text */
+    --primary: 217.2 91.2% 59.8%;           /* Bright blue accent */
     --primary-foreground: 222.2 47.4% 11.2%;/* Dark text on primary */
-    --secondary: 217 33% 20%;               /* Secondary elements */
-    --secondary-foreground: 213 27% 84%;    /* Secondary text */
-    --muted: 217 33% 17%;                   /* Muted backgrounds */
-    --muted-foreground: 215 20.2% 65.1%;    /* Muted text */
-    --accent: 217 33% 20%;                  /* Accent backgrounds */
-    --accent-foreground: 213 27% 84%;       /* Accent text */
-    --destructive: 0 62.8% 30.6%;           /* Destructive red */
-    --destructive-foreground: 210 40% 98%;  /* Text on destructive */
-    --border: 217 33% 20%;                  /* Borders */
-    --input: 217 33% 20%;                   /* Input borders */
-    --ring: 217.2 91.2% 59.8%;              /* Focus ring (matches primary) */
-    --chart-1: 220 70% 50%;                 /* Chart colors */
+    --secondary: 20 10% 18%;                /* Secondary elements */
+    --secondary-foreground: 30 20% 96%;     /* Light text */
+    --muted: 20 10% 18%;                    /* Muted backgrounds */
+    --muted-foreground: 25 8% 60%;          /* Muted text */
+    --accent: 20 10% 18%;                   /* Accent backgrounds */
+    --accent-foreground: 30 20% 96%;        /* Light accent text */
+    --destructive: 0 62.8% 30.6%;           /* Dark red */
+    --destructive-foreground: 210 40% 98%;  /* Light text */
+    --border: 20 10% 20%;                   /* Subtle borders */
+    --input: 20 10% 20%;                    /* Input borders */
+    --ring: 217.2 91.2% 59.8%;              /* Focus ring */
+    --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;

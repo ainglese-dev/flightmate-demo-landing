@@ -23,8 +23,8 @@ export default function NavBarClient() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link href="/trips" className="text-sm font-medium hover:text-primary transition-colors">
-              {t.nav.findTrips}
+            <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">
+              Home
             </Link>
             <Link href="/how-it-works" className="text-sm font-medium hover:text-primary transition-colors">
               {t.nav.howItWorks}
@@ -41,9 +41,6 @@ export default function NavBarClient() {
           <div className="hidden md:flex items-center space-x-2">
             <LanguageSelector />
             <ThemeToggle />
-            <Link href="/post-trip">
-              <Button>{t.nav.postTrip}</Button>
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -67,11 +64,11 @@ export default function NavBarClient() {
           <div className="md:hidden border-t py-4">
             <div className="flex flex-col space-y-4">
               <Link
-                href="/trips"
+                href="/"
                 className="text-sm font-medium hover:text-primary transition-colors px-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {t.nav.findTrips}
+                Home
               </Link>
               <Link
                 href="/how-it-works"
@@ -93,9 +90,6 @@ export default function NavBarClient() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t.nav.contact}
-              </Link>
-              <Link href="/post-trip" className="px-2" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full">{t.nav.postTrip}</Button>
               </Link>
             </div>
           </div>

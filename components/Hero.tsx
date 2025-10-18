@@ -1,70 +1,73 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Plane, Package } from "lucide-react";
-import { useTranslation } from "@/hooks/useTranslation";
 import { motion } from "framer-motion";
-import { analytics } from "@/lib/analytics";
+import { popularProducts } from "@/lib/popular-products";
+import ProductCard from "@/components/ProductCard";
+import BuyerOrderForm from "@/components/BuyerOrderForm";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function Hero() {
-  const t = useTranslation();
+  const { language } = useLanguage();
+
+  // Show first 3 products in hero
+  const featuredProducts = popularProducts.slice(0, 3);
 
   return (
-    <section className="relative py-20 md:py-32">
+    <section className="relative py-12 md:py-20">
       <div className="container mx-auto px-4">
-        <div className="mx-auto max-w-4xl text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl md:text-6xl font-bold tracking-tight mb-6"
-          >
-            {t.hero.headline}{" "}
-            <span className="text-primary">{t.hero.headlineHighlight}</span>
-          </motion.h1>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+            {language === "en" ? (
+              <>
+                Shop from <span className="text-primary">USA</span> to{" "}
+                <span className="text-secondary">Peru</span>
+              </>
+            ) : (
+              <>
+                Compra desde <span className="text-primary">USA</span> a{" "}
+                <span className="text-secondary">Perú</span>
+              </>
+            )}
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            {language === "en"
+              ? "Order products from Amazon, eBay & more. We receive in Miami and deliver to Peru."
+              : "Ordena productos de Amazon, eBay y más. Recibimos en Miami y entregamos en Perú."}
+          </p>
+        </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-8"
-          >
-            {t.hero.subheading} <span className="font-bold text-primary">$15/kg</span>
-          </motion.p>
-
+        {/* Split Layout: Products Left, Form Right */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          {/* Left: Featured Products */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <Link href="/post-trip" onClick={() => analytics.trackCTA("Post Your Trip - Hero")}>
-              <Button size="lg" className="w-full sm:w-auto hover:scale-105 transition-transform">
-                <Plane className="mr-2 h-5 w-5" />
-                {t.hero.ctaPostTrip}
-              </Button>
-            </Link>
-            <Link href="/trips" onClick={() => analytics.trackCTA("Send Package - Hero")}>
-              <Button size="lg" variant="outline" className="w-full sm:w-auto hover:scale-105 transition-transform">
-                <Package className="mr-2 h-5 w-5" />
-                {t.hero.ctaSendPackage}
-              </Button>
-            </Link>
+            <h2 className="text-2xl font-bold mb-6">
+              {language === "en" ? "Popular Products" : "Productos Populares"}
+            </h2>
+            <div className="grid gap-4">
+              {featuredProducts.map((product, index) => (
+                <ProductCard key={product.id} product={product} index={index} />
+              ))}
+            </div>
           </motion.div>
 
+          {/* Right: Order Form */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="relative rounded-2xl overflow-hidden shadow-2xl"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="lg:sticky lg:top-24"
           >
-            <div className="aspect-video bg-gradient-to-br from-primary/20 via-primary/10 to-background flex items-center justify-center">
-              <div className="text-center">
-                <Plane className="h-24 w-24 mx-auto text-primary mb-4" />
-                <p className="text-muted-foreground">{t.hero.heroImageAlt}</p>
-              </div>
-            </div>
+            <BuyerOrderForm />
           </motion.div>
         </div>
       </div>

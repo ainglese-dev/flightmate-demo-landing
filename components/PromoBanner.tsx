@@ -26,11 +26,11 @@ export default function PromoBanner() {
 
   return (
     <div className="relative bg-gradient-to-r from-primary via-primary/90 to-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-3">
+      <div className="container mx-auto px-4 py-2">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 flex-1 justify-center text-center">
-            <Sparkles className="h-5 w-5 shrink-0" />
-            <p className="text-sm md:text-base font-medium">
+            <Sparkles className="h-4 w-4 shrink-0" />
+            <p className="text-xs md:text-sm font-medium">
               {t.promo.message} <span className="font-bold">{t.promo.code}</span>
             </p>
           </div>
@@ -38,10 +38,10 @@ export default function PromoBanner() {
             variant="ghost"
             size="icon"
             onClick={handleDismiss}
-            className="shrink-0 hover:bg-primary-foreground/10 rounded-full"
+            className="shrink-0 hover:bg-primary-foreground/10 rounded-full h-6 w-6"
             aria-label="Dismiss banner"
           >
-            <X className="h-4 w-4" />
+            <X className="h-3 w-3" />
           </Button>
         </div>
       </div>

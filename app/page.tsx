@@ -1,7 +1,10 @@
 "use client";
 
+import PreBannerCarousel from "@/components/PreBannerCarousel";
 import Hero from "@/components/Hero";
 import TrustBadges from "@/components/TrustBadges";
+import TravelerCard from "@/components/TravelerCard";
+import { travelers } from "@/lib/travelers";
 import PopularProducts from "@/components/PopularProducts";
 import Testimonials from "@/components/Testimonials";
 import ExpandingSoon from "@/components/ExpandingSoon";
@@ -30,6 +33,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <PreBannerCarousel />
       <Hero />
       <TrustBadges />
 
@@ -64,6 +68,32 @@ export default function Home() {
                   </CardContent>
                 </Card>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Verified Travelers */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {t.language === "en" ? "Our Verified Travelers" : "Nuestros Viajeros Verificados"}
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              {t.language === "en"
+                ? "Trusted travelers who receive packages in Miami and deliver to Peru"
+                : "Viajeros de confianza que reciben paquetes en Miami y entregan en Perú"}
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {travelers.map((traveler, index) => (
+              <TravelerCard key={traveler.id} traveler={traveler} index={index} />
             ))}
           </div>
         </div>

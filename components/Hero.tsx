@@ -5,6 +5,13 @@ import { popularProducts } from "@/lib/popular-products";
 import ProductCard from "@/components/ProductCard";
 import BuyerOrderForm from "@/components/BuyerOrderForm";
 import { useLanguage } from "@/components/LanguageProvider";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default function Hero() {
   const { language } = useLanguage();
@@ -53,11 +60,25 @@ export default function Hero() {
             <h2 className="text-2xl font-bold mb-6">
               {language === "en" ? "Popular Products" : "Productos Populares"}
             </h2>
-            <div className="grid gap-4">
-              {featuredProducts.map((product, index) => (
-                <ProductCard key={product.id} product={product} index={index} />
-              ))}
-            </div>
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {featuredProducts.map((product, index) => (
+                  <CarouselItem key={product.id}>
+                    <ProductCard product={product} index={index} />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center gap-2 mt-4">
+                <CarouselPrevious className="static translate-y-0" />
+                <CarouselNext className="static translate-y-0" />
+              </div>
+            </Carousel>
           </motion.div>
 
           {/* Right: Order Form */}

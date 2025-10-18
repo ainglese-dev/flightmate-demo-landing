@@ -14,12 +14,14 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useLanguage } from "@/components/LanguageProvider";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 export default function Home() {
   const t = useTranslation();
+  const { language } = useLanguage();
   const howItWorksRef = useRef(null);
   const routesRef = useRef(null);
   const howItWorksInView = useInView(howItWorksRef, { once: true, margin: "-100px" });
@@ -83,10 +85,10 @@ export default function Home() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t.language === "en" ? "Our Verified Travelers" : "Nuestros Viajeros Verificados"}
+              {language === "en" ? "Our Verified Travelers" : "Nuestros Viajeros Verificados"}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t.language === "en"
+              {language === "en"
                 ? "Trusted travelers who receive packages in Miami and deliver to Peru"
                 : "Viajeros de confianza que reciben paquetes en Miami y entregan en Perú"}
             </p>

@@ -1,0 +1,81 @@
+# Decap CMS Configuration for FlightMate Demo Landing
+# Documentation: https://decapcms.org/docs/configuration-options/
+
+backend:
+  name: github
+  repo: ainglese-dev/flightmate-demo-landing # Your GitHub repo
+  branch: main # Branch to update (main or dev/alfredo)
+  base_url: https://api.netlify.com # OAuth endpoint (requires Netlify Identity or GitHub OAuth App)
+  auth_endpoint: auth
+
+# Optional: Use local backend for development
+# Run: npx decap-server
+# Uncomment below for local testing:
+# local_backend: true
+
+# GitHub Pages base path
+site_url: https://ainglese-dev.github.io/flightmate-demo-landing
+display_url: https://ainglese-dev.github.io/flightmate-demo-landing
+
+# Media files configuration
+media_folder: "public/images/cms" # Where uploaded images will be stored
+public_folder: "/flightmate-demo-landing/images/cms" # Public URL path for images
+
+# Content collections
+collections:
+  # Collection 1: Popular Products
+  - name: "popular-products"
+    label: "Popular Products"
+    label_singular: "Product"
+    folder: "content/popular-products"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    summary: "{{name}} - ${{price}}"
+    fields:
+      - { label: "Product Name", name: "name", widget: "string", required: true }
+      - { label: "Description", name: "description", widget: "text", required: true }
+      - { label: "Price (USD)", name: "price", widget: "number", value_type: "float", min: 0, required: true }
+      - { label: "Category", name: "category", widget: "select", options: ["Electronics", "Fashion", "Beauty", "Food", "Other"], default: "Electronics" }
+      - { label: "Amazon Link", name: "amazonLink", widget: "string", required: false, hint: "Full URL to Amazon product page" }
+      - { label: "Apple Link", name: "appleLink", widget: "string", required: false, hint: "Full URL to Apple product page" }
+      - { label: "Product Image", name: "image", widget: "image", required: true, hint: "Upload product photo" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false, hint: "Show on homepage?" }
+      - { label: "Publish Date", name: "date", widget: "datetime", default: "" }
+
+  # Collection 2: Verified Travelers
+  - name: "verified-travelers"
+    label: "Verified Travelers"
+    label_singular: "Traveler"
+    folder: "content/verified-travelers"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    summary: "{{name}} - {{rating}}⭐ ({{tripsCompleted}} trips)"
+    fields:
+      - { label: "Traveler Name", name: "name", widget: "string", required: true }
+      - { label: "Rating", name: "rating", widget: "number", value_type: "float", min: 1, max: 5, step: 0.1, default: 5, required: true }
+      - { label: "Profile Photo", name: "photo", widget: "image", required: true, hint: "Upload traveler photo" }
+      - { label: "Bio", name: "bio", widget: "text", required: true, hint: "Short description about the traveler" }
+      - { label: "Trips Completed", name: "tripsCompleted", widget: "number", value_type: "int", min: 0, default: 0, required: true }
+      - { label: "Routes", name: "routes", widget: "list", field: { label: "Route", name: "route", widget: "string" }, hint: "e.g., Lima → Miami" }
+      - { label: "Verification Status", name: "verified", widget: "boolean", default: true }
+      - { label: "Join Date", name: "joinDate", widget: "datetime", default: "" }
+
+  # Collection 3: Testimonials
+  - name: "testimonials"
+    label: "Testimonials"
+    label_singular: "Testimonial"
+    folder: "content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: customerName
+    summary: "{{customerName}} - {{rating}}⭐"
+    fields:
+      - { label: "Customer Name", name: "customerName", widget: "string", required: true }
+      - { label: "Testimonial", name: "testimonialText", widget: "text", required: true, hint: "What the customer said" }
+      - { label: "Rating", name: "rating", widget: "select", options: ["1", "2", "3", "4", "5"], default: "5", required: true }
+      - { label: "Customer Type", name: "customerType", widget: "select", options: ["Sender", "Traveler"], required: true }
+      - { label: "Route Used", name: "route", widget: "string", required: false, hint: "e.g., Lima → Miami" }
+      - { label: "Date", name: "date", widget: "datetime", default: "" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false, hint: "Show on homepage?" }
